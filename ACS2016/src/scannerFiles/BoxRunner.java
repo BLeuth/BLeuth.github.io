@@ -9,14 +9,14 @@ public class BoxRunner
 {
 	public static void main( String args[] ) throws IOException
 	{
-		Scanner beeb = new Scanner("data/box.dat");
+		Scanner beeb = new Scanner(new File("data/box.dat"));
 		int size = beeb.nextInt();
 		beeb.nextLine();
 		
 		for(int i=0; i<size; i++){
 			String line = beeb.nextLine();
 			Box bob = new Box(line);
-			System.out.println(bob);
+			System.out.println(bob + "\n");
 		}
 	}
 }

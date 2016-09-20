@@ -14,6 +14,12 @@ public class Box
 	   let = ahh.next();
 	   size = Integer.parseInt(ahh.next());
    }
+   
+   public void setBox(String string){
+	   Scanner ahh = new Scanner(string);
+	   let = ahh.next();
+	   size = Integer.parseInt(ahh.next());
+   }
     
 	public String toString()
 	{
