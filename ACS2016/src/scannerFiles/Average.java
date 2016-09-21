@@ -20,11 +20,12 @@ public class Average
 
 	private int getLowest()
 	{
-		int lowest=Integer.MAX_VALUE;
 		Scanner suh = new Scanner(line);
+		int lowest = Integer.MAX_VALUE;
 		while(suh.hasNextInt()){
-			if(suh.nextInt()<lowest)
-				lowest=suh.nextInt();
+			int wha = suh.nextInt();
+			if(wha<lowest)
+				lowest=wha;
 		}
 
 		suh.close();
@@ -45,7 +46,8 @@ public class Average
 		}
 		
 		average = (total-(double)getLowest())/(sum-1.00);
-
+		average = Math.round(average*100)/100D;
+		suh.close();
 		return average;
 	}
 
