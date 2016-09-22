@@ -31,13 +31,13 @@ public class TriangleTwo
 	public String toString()
 	{
 		String output="";
-		/*for(int i=0; i<size; i++){
-			for(int j=i; j>=0; j--)
+		for(int i=0; i<size; i++){
+			for(int j=0; j<=i; j++)
 			{
-				output+=let;
+				output+=letter;
 			}
 			output+="\n";
-		}*/
+		}
 
 
 
