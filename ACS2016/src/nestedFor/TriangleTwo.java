@@ -32,7 +32,7 @@ public class TriangleTwo
 	{
 		String output="";
 		for(int i=0; i<size; i++){
-			for(int j=0; j<=i; j++)
+			for(int j=i; j<size; j++)
 			{
 				output+=letter;
 			}
