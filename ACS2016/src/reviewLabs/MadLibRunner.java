@@ -6,8 +6,8 @@ public class MadLibRunner
 {
 	public static void main( String args[] )
 	{
-		//make a new MadLib
+		MadLib bam = new MadLib("data/story.dat");
 		
-		out.println("\n");
+		out.println(bam+"\n");
 	}
 }
