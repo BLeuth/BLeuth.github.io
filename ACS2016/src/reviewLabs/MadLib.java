@@ -14,7 +14,7 @@ public class MadLib
 	private ArrayList<String> verbs;
 	private ArrayList<String> nouns;
 	private ArrayList<String> adjectives;
-	String fStory;
+	String fStory="";
 	
 	public MadLib()
 	{
@@ -25,6 +25,10 @@ public class MadLib
 
 	public MadLib(String fileName)
 	{
+		nouns = new ArrayList<String>();
+		adjectives = new ArrayList<String>();
+		verbs = new ArrayList<String>();
+		
 		loadNouns();
 		loadVerbs();
 		loadAdjectives();
@@ -37,26 +41,26 @@ public class MadLib
 			String bam = file.nextLine();
 			
 			ArrayList<String> story = new ArrayList<String>();
-
+			
 			for(String whoop : bam.split(" ")){
 				story.add(whoop);
 			}
+			out.println(story.toString());
 			
 			for(int i=0; i<story.size(); i++){
 				if(story.get(i).equals("#")){
 					story.set(i, getRandomNoun());
 				}
-				if(story.get(i).equals("@")){
+				else if(story.get(i).equals("@")){
 					story.set(i, getRandomVerb());
 				}
-				if(story.get(i).equals("&")){
+				else if(story.get(i).equals("&")){
 					story.set(i, getRandomAdjective());
 				}
 			}
 			
-			for (String s : story)
-			{
-			    fStory += s + " ";
+			for(int i=0; i<story.size(); i++){
+				fStory+=story.get(i)+" ";
 			}
 		
 			file.close();
@@ -76,7 +80,7 @@ public class MadLib
 	public void loadNouns()
 	{
 		try{
-			nouns = new ArrayList<String>();
+			
 			Scanner scan = new Scanner(new File("data/nouns.dat"));
 			
 			while(scan.hasNextLine()){
@@ -97,7 +101,7 @@ public class MadLib
 	public void loadVerbs()
 	{
 		try{
-			verbs = new ArrayList<String>();
+			
 			Scanner scan = new Scanner(new File("data/verbs.dat"));
 			
 			while(scan.hasNextLine()){
@@ -117,7 +121,7 @@ public class MadLib
 	public void loadAdjectives()
 	{
 		try{
-			adjectives = new ArrayList<String>();
+			
 			Scanner scan = new Scanner(new File("data/adjectives.dat"));
 			
 			while(scan.hasNextLine()){
