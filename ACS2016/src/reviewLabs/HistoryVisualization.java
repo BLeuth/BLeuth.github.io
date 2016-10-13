@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class HistoryVisualization {
 	
-	public int[] ages = new int[191]; //this number may be incorrect
+	public int[] ages = new int[192]; //this number may be incorrect
 
 	
 	
@@ -16,32 +16,26 @@ public class HistoryVisualization {
 		try {
 			Scanner ah = new Scanner(new File(filename));
 			
-			int i=0;
+			int spot=0;
 			while(ah.hasNextLine()){
-				/*String line = ah.nextLine();
-				int huh = Integer.parseInt(line.replaceAll("[\\D]", ""));
-				System.out.print(huh);
-				if(line.matches("[\\d]")){
-					ages[i] = huh;
-				}*/
 				String line = ah.nextLine();
-				
-				if(hasNum(line)){
-					int huh = Integer.parseInt(line.replaceAll("[\\D]", ""));
-					
-					ages[i] = huh;
-					i++;
-					System.out.print(i);
+				String numLine = line.substring(25,27);
+
+				if(hasNum(numLine)){
+					int huh = Integer.parseInt(numLine);	
+					ages[spot] = huh;
+					spot++;
 				}
-				
-				/*if((line.replaceAll("[\\D]","")).matches("[\\d]")){
-					int huh = Integer.parseInt(line.replaceAll("[\\D]", ""));
-					ages[i] = huh;
-					i++;
-				}*/
 			}
 			
 			ah.close();
+			
+			for(int i=0; i<100; i++){
+				if(getAges(i)>0){
+					System.out.println("Age: "+i+" Count: "+getAges(i));
+				}
+			}
+			
 			
 		} catch (FileNotFoundException e) {
 			System.out.print("File aint goin");
@@ -50,18 +44,26 @@ public class HistoryVisualization {
 	}
 	
 	public boolean hasNum(String string){
-		int length = string.length();
-		Scanner scan = new Scanner(string);
-		for(int i=0; i<length; i++){
-			//if(string.charAt(i)=="[\\d]")
-		}
-		return false;
+		String flip = string.replaceAll("[\\D]", "");
+		int length = flip.length();
+
+		if(length<1)
+			return false;
+		return true;
 	
 	}
 
+	public int getAges(int age){
+		int count=0;
+		for(int hm : ages){
+			if(hm==age){
+				count++;
+			}
+		}
+		return count;
+	}
 	
 	public String toString(){
-		return Arrays.toString(ages)+"";
+		return "Fun facts brought to you by me"	;
 	}
-
 }
