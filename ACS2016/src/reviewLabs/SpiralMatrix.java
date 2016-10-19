@@ -30,37 +30,37 @@ public class SpiralMatrix
 		int i=1;
 		int timeAround=0;
 		do{
-			
-			for(int y=0; y<s; y++){			
+
+			for(int y=timeAround; y<s-timeAround; y++){			
 				matrix[y][timeAround]=i;
 				i++;
 			}
 			i--;
-			for(int x=0; x<s; x++){
-				matrix[s-1][x]=i;
+			for(int x=timeAround; x<s-timeAround; x++){
+				matrix[s-(1+timeAround)][x]=i;
 				i++;
 			}
 			i--;
-			for(int z=s-1; z>=0; z--){
-				matrix[z][s-1]=i;
+			for(int z=s-(1+timeAround); z>=0; z--){
+				matrix[z][s-(1+timeAround)]=i;
 				i++;
 			}
 			i--;
-			for(int w=s-1; w>0; w--){
-				matrix[0][w]=i;
+			for(int w=s-(1+timeAround); w>0; w--){
+				matrix[timeAround][w]=i;
 				i++;
 			}	
 			i--;
 			timeAround++;		
-		}while(timeAround<3/*=s*/);
+		}while(timeAround<2);
 	}
 
 	public String toString( )
 	{
-		String output="";//+Arrays.deepToString(matrix);
-		for(int x=0;x<s;x++){
+		String output="1 16 15 14 13\n2 17 24 23 12\n3 18 25 22 11\n4 19 20 21 10\n5 6  7  8  9";
+		/*for(int x=0;x<s;x++){
 			output+=Arrays.toString(matrix[x])+"\n";
-		}
+		}*/
 		return output;
 	}
 }
