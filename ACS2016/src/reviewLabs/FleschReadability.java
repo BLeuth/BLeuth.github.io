@@ -28,7 +28,7 @@ public class FleschReadability {
 			scan = new Scanner(url.openStream());
 			String big="";
 			while(scan.hasNextLine()){
-				big+=scan.nextLine();
+				big+=scan.nextLine()+" ";
 			}
 			
 			for(String bam : big.split("\\.\\s*|\\:\\s*|\\;\\s*|\\?\\s*|\\!\\s*")){
@@ -51,14 +51,19 @@ public class FleschReadability {
 	
 	public int sylCount(){
 		int count=0;
+		String boom="";
+		ArrayList<String> syl = new ArrayList<String>();
 		for(int i=0; i<wordCount(); i++){
-			ArrayList<String> syl = new ArrayList<String>();
-			String boom = words.get(i);
-			for(String string : boom.split("[[aeiouAEIOU][aeiouAEIOU]*]")){
+			
+			boom += words.get(i)+" ";
+		}
+		System.out.println("BOOM!!! " + boom);
+			for(String string : boom.split("[aeiouAEIOU][aeiouAEIOU]*[^\\s]"/*[aeiouAEIOU]*^\\s"*/)){
 				syl.add(string);
 			}
-			count+=syl.size();
-		}
+			System.out.println(syl.toString());
+			count=syl.size();
+		//}
 		return count;
 	}
 	
@@ -89,15 +94,30 @@ public class FleschReadability {
 	
 	public double readScore(){
 		double score=0;
-		//score = 206.835-((avgSentl()*1.015)+(avgWordl()*84.6));
-		score = 206.835-(avgSentl()*1.015)-(374/265);
+		score = 206.835-((avgSentl()*1.015)+(avgWordl()*84.6));
+		//score = 206.835-(avgSentl()*1.015)-(374/265);
 		System.out.println("readSentl: "+avgSentl()*1.015);
 		System.out.println("readWordl: "+avgWordl()*84.6);
 		return score;
 	}
 	
 	public String readIndex(){
-		return "";
+		double score = readScore();
+		if(score>=91)
+			return "5th Grade";
+		if(score>=81)
+			return "6th Grade";
+		if(score>=71)
+			return "7th Grade";
+		if(score>=61)
+			return "8th and 9th Grade";
+		if(score>=51)
+			return "10th to 12th Grade";
+		if(score>=31)
+			return "College Student";
+		if(score>=0)
+			return "College Graduate";
+		return "Are you sure you entered a text?";
 	}
 	
 	public String toString(){
