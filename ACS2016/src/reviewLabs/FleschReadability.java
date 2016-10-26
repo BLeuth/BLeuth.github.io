@@ -10,8 +10,11 @@ public class FleschReadability {
 
 	public ArrayList<String> words = new ArrayList<String>();
 	public ArrayList<String> sentences = new ArrayList<String>();
+	public String fName = "";
 	
 	public FleschReadability(String string){
+		
+		fName=string;
 		
 		try {
 			URL url = new URL(string);
@@ -51,6 +54,7 @@ public class FleschReadability {
 	
 	public int sylCount(){
 		int count=0;
+		int ah=0; int hm=0;
 		String boom="";
 		ArrayList<String> syl = new ArrayList<String>();
 		for(int i=0; i<wordCount(); i++){
@@ -58,13 +62,17 @@ public class FleschReadability {
 			boom += words.get(i)+" ";
 		}
 		System.out.println("BOOM!!! " + boom);
-			for(String string : boom.split("[aeiouAEIOU][aeiouAEIOU]*[^\\s]"/*[aeiouAEIOU]*^\\s"*/)){
-				syl.add(string);
-			}
-			System.out.println(syl.toString());
-			count=syl.size();
-		//}
-		return count;
+		for(String string : boom.split("[aeiouy]+?\\w*?[^e]"/*"[aeiouAEIOU][aeiouAEIOU]*[^\\s]"*//*[aeiouAEIOU]*^\\s"*/)){
+			syl.add(string);
+			ah++;
+		}
+		for(String string : boom.split("[aeiouAEIOU][aeiouAEIOU]*[^\\s]")){
+			hm++;
+		}
+		System.out.println(syl.toString());
+		count=syl.size();
+		
+		return (ah+hm)/2;
 	}
 	
 	public double avgWordl(){
@@ -94,8 +102,8 @@ public class FleschReadability {
 	
 	public double readScore(){
 		double score=0;
-		score = 206.835-((avgSentl()*1.015)+(avgWordl()*84.6));
-		//score = 206.835-(avgSentl()*1.015)-(374/265);
+		//score = 206.835-((avgSentl()*1.015)+(avgWordl()*84.6));
+		score = 206.835-(avgSentl()*1.015)-((sylCount()/265)*84.6);
 		System.out.println("readSentl: "+avgSentl()*1.015);
 		System.out.println("readWordl: "+avgWordl()*84.6);
 		return score;
@@ -121,7 +129,7 @@ public class FleschReadability {
 	}
 	
 	public String toString(){
-		return "Word ArrayList: "+Arrays.toString(words.toArray())+"\nSentence ArrayList: "+Arrays.toString(sentences.toArray())+"\nWord Count: "+wordCount()+"\nSylable Count: "+sylCount()+"\nSentence Count: "+sentCount()
-		+"\nReadability Score: "+readScore();
+		return "Word ArrayList: "+Arrays.toString(words.toArray())+"\nSentence ArrayList: "+Arrays.toString(sentences.toArray())+"\nSourceFile: "+fName+"\nWord Count: "+wordCount()+"\nSylable Count: "+sylCount()+"\nSentence Count: "+sentCount()
+		+"\nReadability Score: "+readScore()+"\nEducational Level: "+ readIndex();
 	}
 }
