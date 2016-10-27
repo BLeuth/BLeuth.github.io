@@ -14,6 +14,9 @@ public class FleschReadabilityRunner {
 		
 		bam = new FleschReadability("http://www.rfrank.net/projects/cslabs-final/1410-flesch/test-college-grad.txt");
 		System.out.println(bam);
+		
+		bam = new FleschReadability("http://www.gutenberg.org/cache/epub/1524/pg1524.txt");
+		System.out.println(bam);
 	}
 }
 

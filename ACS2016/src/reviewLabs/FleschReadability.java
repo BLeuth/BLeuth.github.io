@@ -61,7 +61,6 @@ public class FleschReadability {
 		int ah=0; int hm=0;
 		String boom="";
 		for(int i=0; i<wordCount(); i++){
-			
 			boom += words.get(i)+" ";
 		}
 		for(String string : boom.split("[aeiouy]+?\\w*?[^e]"/*"[aeiouAEIOU][aeiouAEIOU]*[^\\s]"*//*[aeiouAEIOU]*^\\s"*/)){
@@ -107,6 +106,8 @@ public class FleschReadability {
 	
 	public String readIndex(){
 		double score = readScore();
+		if(score>=101)
+			return "4th Grade";
 		if(score>=91)
 			return "5th Grade";
 		if(score>=81)
