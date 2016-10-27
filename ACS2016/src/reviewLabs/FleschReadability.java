@@ -1,12 +1,15 @@
 package reviewLabs;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class FleschReadability {
+
 
 	public ArrayList<String> words = new ArrayList<String>();
 	public ArrayList<String> sentences = new ArrayList<String>();
@@ -23,10 +26,12 @@ public class FleschReadability {
 			while(scan.hasNextLine()){
 				String line = scan.nextLine();
 
+
 				for(String lame : line.split("\\s|\\.\\s*|\\,\\s*")){
 					words.add(lame);
 				}
 			}
+			scan.close();
 			
 			scan = new Scanner(url.openStream());
 			String big="";
@@ -37,7 +42,7 @@ public class FleschReadability {
 			for(String bam : big.split("\\.\\s*|\\:\\s*|\\;\\s*|\\?\\s*|\\!\\s*")){
 				sentences.add(bam);
 			}
-			
+			scan.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace(); System.out.println("URL no go");
@@ -53,24 +58,18 @@ public class FleschReadability {
 	}
 	
 	public int sylCount(){
-		int count=0;
 		int ah=0; int hm=0;
 		String boom="";
-		ArrayList<String> syl = new ArrayList<String>();
 		for(int i=0; i<wordCount(); i++){
 			
 			boom += words.get(i)+" ";
 		}
-		System.out.println("BOOM!!! " + boom);
 		for(String string : boom.split("[aeiouy]+?\\w*?[^e]"/*"[aeiouAEIOU][aeiouAEIOU]*[^\\s]"*//*[aeiouAEIOU]*^\\s"*/)){
-			syl.add(string);
 			ah++;
 		}
 		for(String string : boom.split("[aeiouAEIOU][aeiouAEIOU]*[^\\s]")){
 			hm++;
 		}
-		System.out.println(syl.toString());
-		count=syl.size();
 		
 		return (ah+hm)/2;
 	}
@@ -81,7 +80,6 @@ public class FleschReadability {
 			avg += words.get(i).length();
 		}
 		avg = avg/words.size();
-		System.out.println("avg wl " +avg);
 		return Math.round(avg);
 	}
 	
@@ -95,17 +93,15 @@ public class FleschReadability {
 			}
 		}
 		
-		avg = (double)thingies.size()/(double)sentences.size();
-		System.out.println("avg sl " +avg);
+		avg = (double)thingies.size()/(double)sentCount();
 		return Math.round(avg);
 	}
 	
 	public double readScore(){
 		double score=0;
-		//score = 206.835-((avgSentl()*1.015)+(avgWordl()*84.6));
-		score = 206.835-(avgSentl()*1.015)-((sylCount()/265)*84.6);
-		System.out.println("readSentl: "+avgSentl()*1.015);
-		System.out.println("readWordl: "+avgWordl()*84.6);
+		double a = 1.015*avgSentl();
+		double b = 84.6*((double)sylCount()/(double)wordCount());
+		score = 206.835-a-b;
 		return score;
 	}
 	
@@ -129,7 +125,7 @@ public class FleschReadability {
 	}
 	
 	public String toString(){
-		return "Word ArrayList: "+Arrays.toString(words.toArray())+"\nSentence ArrayList: "+Arrays.toString(sentences.toArray())+"\nSourceFile: "+fName+"\nWord Count: "+wordCount()+"\nSylable Count: "+sylCount()+"\nSentence Count: "+sentCount()
-		+"\nReadability Score: "+readScore()+"\nEducational Level: "+ readIndex();
+		return "\nSourceFile: "+fName+"\nWord Count: "+wordCount()+"\nSylable Count: "+sylCount()+"\nSentence Count: "+sentCount()
+		+"\nReadability Score: "+(double)Math.round(readScore()*100)/100+"\nEducational Level: "+ readIndex();
 	}
 }
