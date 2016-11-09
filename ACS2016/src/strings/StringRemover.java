@@ -20,8 +20,16 @@ class StringRemover
 	public String removeStrings()
 	{
 		String cleaned = sentence;
-		String regex = ".[" + remove + "]";
-		cleaned = cleaned.replaceAll(regex,"");
+		boolean cont=true;
+		while(cont){
+			int index = cleaned.indexOf(remove);
+			if(index>-1){
+				cleaned= cleaned.substring(index,index+remove.length()-1);
+			}
+			else{
+				cont=false;
+			}
+		}
 		return cleaned;
 	}
 
