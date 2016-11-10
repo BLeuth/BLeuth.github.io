@@ -13,5 +13,8 @@ public class StringRemoverRunner
 		
 		run.setRemover("fuxqwexqwertyxqwexqwertyrtyxqwertyrtyn", "qwerty");
 		System.out.println("\n"+run);
+		
+		run.setRemover("xR-MxR-MHelloxR-M ", "R-M");
+		System.out.println("\n"+run);
 	}
 }

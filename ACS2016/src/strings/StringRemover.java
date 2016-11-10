@@ -24,7 +24,9 @@ class StringRemover
 		while(cont){
 			int index = cleaned.indexOf(remove);
 			if(index>-1){
-				cleaned= cleaned.substring(index,index+remove.length()-1);
+				String a = cleaned.substring(0,index-1);
+				String b = cleaned.substring(index+remove.length());
+				cleaned= a+b;
 			}
 			else{
 				cont=false;
