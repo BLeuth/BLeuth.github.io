@@ -11,9 +11,12 @@ public class PirateRunner {
 		System.out.println("Ahoy me maty! Welcome to the English to Pirate Language Converter!");
 		
 		System.out.print("\nEnter some text you would like converted: ");
-		String text = scan.next();
+		String text = scan.nextLine();
 		
 		Pirate run = new Pirate(text);
+		System.out.println(run);
+		
+		scan.close();
 	}
 
 }
