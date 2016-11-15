@@ -1,0 +1,109 @@
+/** {
+	border: 1px solid black;
+}*/
+
+body {
+	background-color: #f9eeca;
+}
+.navigation {
+	border: 1px;
+	border-radius: 10px;
+	float: left;
+	text-align: center;
+	background-color: #9bd5f2;
+	box-shadow: rgba(0,0,0,0.2) 5px 5px;
+	position: fixed;
+	display: block;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.navigation img {
+	border-radius: 30%;
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+}
+.navigation table {
+	margin: 0 auto;
+	padding-bottom: 5px;
+}
+
+.navigation tr {
+	background: #f4f7f8;
+	border-bottom: 1px solid #FFF;
+	margin-bottom: 5px;
+}
+
+.navigation th, .navigation td {
+	padding: 15px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.aboutme, .projects, .contact {
+	border-radius: 10px;
+	margin-left: 200px;
+	padding: 0px 5px 2px 5px;
+	background-color: #9bd5f2;
+}
+
+.aboutme h1, .projects h1, .contact h1 {
+	text-align: center;
+}
+
+p {
+	font-size: 18px;
+}
+
+.projects, .contact {
+	margin-top: 20px;
+}
+
+table {
+	margin: 20px auto;
+	position: static;
+}
+	
+thead th {
+	background-color: white;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	font-weight: 100;
+	letter-spacing: 2px;
+}
+
+tr:hover {
+	background-color: #ffff99;
+}
+
+.projects tr {
+	background: #f4f7f8;
+	border-bottom: 1px solid #FFF;
+	margin-bottom: 5px;
+}
+
+.projects th, .projects td {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	padding: 20px;
+	text-align: left;
+	width: 33.3333%;
+}
+
+.ngen {
+	border-radius: 10px;
+	background-color: #f4f7f8;
+	display: inline-block;
+	padding-left: 6px;
+	padding-right: 6px;
+	margin-bottom: 5px;
+}
+
+td img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 100px;
+	height: 100px;
+}

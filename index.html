@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <title>My Story</title>
+  </head>
+  
+  <body>
+    <div class="navigation">
+	  <img src="BlowinDand.jpg" id="profilepic">
+	  <h1>Bailey Leuth</h1>
+	  <table>
+	    <th>Navigation</th>
+		<tbody>
+		  <tr><td><a href="#gtaboutme">About Me</a></td></tr>
+		  <tr><td><a href="#gtprojects">Projects</a></td></tr>
+		  <tr><td><a href="#gtcontact">Contact</a></td></tr>
+		</tbody>
+	  </table>
+	</div>
+	
+	<div class="aboutme">
+	  <h1><a name="gtaboutme">Who am I?</a></h1>
+	  <p>My name is Bailey Leuth. I am currently a senior attending Rosemount High School. Throughout my high school career I have always strived to push myself and do the best work I can do. This carries over to taking almost exclusively Advance Placement (AP) and Honor classes starting with AP US History sophomore year with a grand total of 8 AP and 9 honors classes. Now as a senior my class load includes AP BC Calculus (equates to two semesters of college level calc), Honors Physics, AP Literature and College in Schools (CIS) Data structures. 
+      <br><br>
+	  Outside of school, I have been a part of many extra curriculars including four years on my school's cross country team, three years playing trumpet in the top jazz band of my school and three years in the Minnesota Youth Symphony. The last two years with the symphony I have been in the top orchestra and this year sit in the principal chair.
+	  <br><br>
+	  With regard to my favorite class and subject computer science, during my junior year of high school I had the privilege of taking AP Computer Science. This class is where the passion found its roots. Now in my senior year I am taking Algorithms and Data Structures. In these classes we’ve worked on a variety of projects ranging from simple one method problems to projects requiring multiple classes. The most challenging but rewarding part of these classes is the problem solving. There is nothing more satisfying than sitting down and finding the solution, whether it involves refining your old work or taking to the web and learning something entirely new.
+	  <br><br>
+	  Following high school my plans are to attend college in the midwest with either an engineering major with a computer science minor or a computer science major. I hope to be able to further my knowledge of computer science and pursue this passion of mine as a career.
+	  </p>
+	</div>
+	
+	<div class="projects">
+	  <h1><a name="gtprojects">Projects</a></h1>
+	  <p>These are a few examples of projects I've worked on</p>
+	  <table>
+	    <thead>
+		  <tr>
+		    <td>FleschReadability</td>
+			<td>HistoryVisualization</td>
+			<td>AnotherOne</td>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td><img src="http://weknowyourdreams.com/images/space/space-04.jpg"></td>
+			<td><img src="http://weknowyourdreams.com/images/space/space-03.jpg"></td>
+			<td><img src="http://weknowyourdreams.com/images/space/space-02.jpg"></td>
+		  </tr>
+		</tbody>
+	  </table>
+	  <div class="ngen">
+	    <h2>NumberGenerator</h2>
+	    <p>Welcome to Number Generator!</p>
+	    <p>Enter a length for your number (up to 16)</p>
+	    <input type="text" id="input1" />
+	    <button type="button" onclick="numberGenerator()">Run</button>
+	    <p id="numGen"></p>
+	  </div>
+	</div>
+	
+	<div class="contact">
+	  <h1><a name="gtcontact">Contact Information</a></h1>
+	  <p><strong>Cell:</strong> 952-913-4159</p>
+	  <p><strong>Email:</strong> Baileyleuth@yahoo.com</p>
+	</div>
+	
+	<script>
+	function numberGenerator(){
+	  var num = +document.getElementById('input1').value;
+	  var rand = Math.random().toString().slice(2,(num+2));
+	  document.getElementById("numGen").innerHTML = "Your randomly generated number: " + rand;
+	}
+	  
+	</script>
+	
+  </body>
+</html>
